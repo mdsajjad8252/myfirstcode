@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Muharram</title>
+  <style>
+    body {
+      background-image: url('https://media.gettyimages.com/id/1457142871/photo/imam-ali-shrine-in-najaf.jpg?s=612x612&w=gi&k=20&c=F9tSKT3x6Abn7boXUCQh2yx_FGKjdWbNbavfheaMa7U=');
+      background-size: cover; /* ✅ Image puri screen me fit kare */
+      background-repeat: no-repeat;
+      background-position: center;
+      min-height: 100vh; /* ✅ Screen ki full height tak body */
+      padding: 20px;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      color: red;
+      text-align: center;
+    }
+
+    label {
+      color: black;
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    input[type="text"],
+    input[type="tel"] {
+      padding: 5px;
+      font-size: 14px;
+      margin-top: 5px;
+      width: 200px;
+    }
+
+    button[type="submit"] {
+      background-color: blue;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    form {
+      background-color: rgba(255, 255, 255, 0.8); /* 🔳 हल्का white background ताकि text image पर साफ दिखे */
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      margin: auto;
+    }
+
+    br {
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <h1>MUHARRAM T-SHIRT</h1>
+  <form action="/submit-form" method="post">
+    <label for="name">NAME</label><br>
+    <input type="text" id="name" name="NAME" required><br><br>
+
+    <label for="father">FATHER NAME</label><br>
+    <input type="text" id="father" name="FATHER_NAME" required><br><br>
+
+    <label>T-SHIRT SIZE</label><br>
+    <input type="radio" value="M" name="size"> M<br>
+    <input type="radio" value="L" name="size"> L<br>
+    <input type="radio" value="XL" name="size"> XL<br>
+    <input type="radio" value="XXL" name="size"> XXL<br><br>
+
+    <label for="JN">JERSEY NO</label><br>
+    <input type="tel" id="JN" name="JERSEY_NO" required><br><br>
+
+    <b>Payment on this number: 8252518069</b><br><br>
+
+    <button type="submit">SUBMIT</button>
+  </form>
+</body>
+</html>
