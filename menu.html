@@ -1,0 +1,56 @@
+<
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Scanner</title>
+    <style>
+        #reader { width: 300px; height: 300px; margin: 20px auto; border: 2px solid #ccc; border-radius: 10px; }
+        #error-message { color: red; font-weight: bold; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h1>QR Code Scanner</h1>
+    <p id="error-message"></p>
+    <div id="reader"></div>
+
+    <script src="https://unpkg.com/html5-qrcode/minified/html5-qrcode.min.js"></script>
+    <script>
+        const html5QrCode = new Html5Qrcode("reader");
+
+        const onScanSuccess = (decodedText, decodedResult) => {
+            alert(Scanned successfully: ${decodedText});
+            html5QrCode.stop(); // Stop scanner after successful scan
+        };
+
+        const onScanError = (error) => {
+            console.warn("Scan error:", error);
+        };
+
+        const startScanner = () => {
+            Html5Qrcode.getCameras().then(cameras => {
+                if (cameras && cameras.length) {
+                    console.log("Available cameras:", cameras);
+                    html5QrCode.start(
+                        cameras[0].id, // Use the first camera
+                        { fps: 10, qrbox: 250 },
+                        onScanSuccess,
+                        onScanError
+                    ).catch(err => {
+                        console.error("Failed to start camera:", err);
+                        document.getElementById("error-message").textContent = "Camera failed to start. Please check permissions or device.";
+                    });
+                } else {
+                    document.getElementById("error-message").textContent = "No cameras found. Please check your device.";
+                }
+            }).catch(err => {
+                console.error("Camera access error:", err);
+                document.getElementById("error-message").textContent = "Camera access denied. Please allow permissions.";
+            });
+        };
+
+        startScanner();
+    </script>
+</body>
+</html>
